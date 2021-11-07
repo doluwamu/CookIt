@@ -1,0 +1,27 @@
+{
+  "name": "cookit",
+  "version": "1.0.0",
+  "description": "App for checking cool recipes",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix frontend",
+    "server": "nodemon backend/server.js",
+    "populate": "node backend/fakeDB/cleanDB.js"
+  },
+  "keywords": [
+    "CI"
+  ],
+  "author": "CookIt groups",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
