@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm start --prefix frontend",
+    "client": "npm start --prefix cookit",
     "server": "nodemon backend/server.js",
     "populate": "node backend/fakeDB/cleanDB.js"
   },

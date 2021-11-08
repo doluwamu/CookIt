@@ -37,3 +37,13 @@ app.post("/recipe", async (req, res) => {
 const PORT = process.env.PORT;
 
 app.listen(PORT, console.log(`Server running on port ${PORT}`));
+
+// "node-sass": "^6.0.1",
+//     "react": "^17.0.1",
+//     "react-bootstrap": "^2.0.2",
+//     "react-dom": "^17.0.1",
+//     "react-helmet": "^6.1.0",
+//     "react-redux": "^7.2.6",
+//     "react-router-dom": "^6.0.1",
+//     "react-scripts": "4.0.1",
+//     "redux": "^4.1.2",
