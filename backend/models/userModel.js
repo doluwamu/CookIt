@@ -11,13 +11,21 @@ const userSchema = mongoose.Schema(
     name: { type: String, required: [true, message] },
     email: { type: String, required: [true, message], match: EMAIL_PATTERN },
     password: { type: String, required: [true, message] },
-    acceptedPrivacyTerms: { type: Boolean, required: [true, message] },
+    acceptedPrivacyTerms: {
+      type: Boolean,
+      required: [true, message],
+      default: false,
+    },
     isAdmin: { type: Boolean, required: true, default: false },
   },
   {
     timestamps: true,
   }
 );
+
+userSchema.methods.matchPassword = async function (entredPassword) {
+  return await bcrypt.compare(entredPassword, this.password);
+};
 
 userSchema.pre("save", function (next) {
   if (!this.isModified("password")) {
