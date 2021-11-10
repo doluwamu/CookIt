@@ -5,13 +5,22 @@ import {
   recipesListReducer,
   recipeByIdReducer,
 } from "./reducers/recipeReducer";
+import { userRegisterReducer, userLoginReducer } from "./reducers/userReducer";
 
 const reducer = combineReducers({
   recipesList: recipesListReducer,
   recipeById: recipeByIdReducer,
+  userRegister: userRegisterReducer,
+  userLogin: userLoginReducer,
 });
 
-const initialState = {};
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : {};
+
+const initialState = {
+  userLogin: { userInfo: userInfoFromStorage },
+};
 
 const middleware = [thunk];
 

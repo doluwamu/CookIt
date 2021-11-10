@@ -1,12 +1,18 @@
 @import "./styles/recipe.scss";
+@import "./styles/forms.scss";
 
 :root {
   --mainBlack: #000;
   --mainGrey: #777;
+  --mainWhite: #fff;
 }
 
 main {
   min-height: 80vh;
+}
+
+a {
+  text-decoration: none;
 }
 
 h3 {
@@ -26,6 +32,12 @@ h2 {
 header {
   a {
     text-decoration: none;
+  }
+
+  h5 {
+    margin-top: 0.7rem;
+    margin-right: 1.8rem;
+    color: var(--mainWhite);
   }
 }
 

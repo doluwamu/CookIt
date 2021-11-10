@@ -1,6 +1,7 @@
 import {
   GET_RECIPE_BY_ID_FAIL,
   GET_RECIPE_BY_ID_REQUEST,
+  GET_RECIPE_BY_ID_RESET,
   GET_RECIPE_BY_ID_SUCCESS,
   LIST_RECIPES_FAIL,
   LIST_RECIPES_REQUEST,
@@ -23,7 +24,7 @@ export const recipesListReducer = (state = { recipes: [] }, action) => {
   }
 };
 
-export const recipeByIdReducer = (state = {}, action) => {
+export const recipeByIdReducer = (state = { recipe: {} }, action) => {
   switch (action.type) {
     case GET_RECIPE_BY_ID_REQUEST:
       return { loading: true };
@@ -33,6 +34,9 @@ export const recipeByIdReducer = (state = {}, action) => {
 
     case GET_RECIPE_BY_ID_FAIL:
       return { loading: false, error: action.payload };
+
+    case GET_RECIPE_BY_ID_RESET:
+      return { recipe: {} };
 
     default:
       return state;

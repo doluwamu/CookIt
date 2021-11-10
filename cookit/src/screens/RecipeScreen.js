@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
 import { firstLetterToUpperCase } from "../helpers/wordHelpers";
 import { getRecipeById } from "../redux/actions/recipeActions";
 import Loader from "../components/Loader";
+// import { recipes } from "../data";
 
 const RecipeScreen = ({ match: { params } }) => {
   const { id } = params;
@@ -11,8 +13,6 @@ const RecipeScreen = ({ match: { params } }) => {
 
   const recipeById = useSelector((state) => state.recipeById);
   const { loading, recipe, error } = recipeById;
-
-  console.log(recipe);
 
   useEffect(() => {
     dispatch(getRecipeById(id));
@@ -22,10 +22,16 @@ const RecipeScreen = ({ match: { params } }) => {
     return <Loader />;
   }
 
-  if (error) console.log(error);
+  if (error) {
+    console.log(error);
+  }
 
   return (
     <>
+      <Link className="btn btn-light" to="/">
+        Go Back
+      </Link>
+
       <h1 className="recipe-header">{recipe.name}</h1>
       <div className="recipe">
         <Image
@@ -37,35 +43,37 @@ const RecipeScreen = ({ match: { params } }) => {
 
         <div className="recipe-info">
           {/* Ingredients */}
-          <p className="recipe-ingredients">
+          <div className="recipe-ingredients">
             <h2>Ingredients</h2>
             <ol className="recipe-ingredients-list">
-              {recipe.ingredients.map((ingredient) => (
-                <li key={ingredient} className="ingredient">
-                  {firstLetterToUpperCase(ingredient)}
-                </li>
-              ))}
+              {recipe.ingredients &&
+                recipe.ingredients.map((ingredient) => (
+                  <li key={ingredient} className="ingredient">
+                    {firstLetterToUpperCase(ingredient)}
+                  </li>
+                ))}
             </ol>
-          </p>
+          </div>
 
           {/* Others */}
           <div className="other-recipe-details">
-            <p className="recipe-description">
+            <div className="recipe-description">
               <h2>Description</h2>
               <p className="description">
                 {firstLetterToUpperCase(recipe.description)}
               </p>
-            </p>
-            <p className="recipe-instructions">
+            </div>
+            <div className="recipe-instructions">
               <h2>Preparation Instructions</h2>
               <ol className="recipe-instructions-list">
-                {recipe.instructions.map((instruction) => (
-                  <li key={instruction} className="instruction">
-                    {firstLetterToUpperCase(instruction)}
-                  </li>
-                ))}
+                {recipe.instructions &&
+                  recipe.instructions.map((instruction) => (
+                    <li key={instruction} className="instruction">
+                      {firstLetterToUpperCase(instruction)}
+                    </li>
+                  ))}
               </ol>
-            </p>
+            </div>
           </div>
         </div>
       </div>

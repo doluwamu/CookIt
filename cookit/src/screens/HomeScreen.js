@@ -4,7 +4,6 @@ import { Row, Col } from "react-bootstrap";
 import Recipe from "../components/Recipe";
 import { listRecipes } from "../redux/actions/recipeActions";
 import Loader from "../components/Loader";
-// import { recipes } from "../data";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
