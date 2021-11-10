@@ -4,6 +4,7 @@ import { generateToken } from "../utils/generateToken.js";
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password, acceptedPrivacyTerms } = req.body;
+
     if (!name) {
       return res.sendApiError({
         title: "Missing data",
