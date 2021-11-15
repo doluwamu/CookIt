@@ -10,23 +10,25 @@ import {
   LIST_RECIPES_SUCCESS,
 } from "../constants/recipeConstants";
 
-export const listRecipes = () => async (dispatch) => {
-  dispatch({ type: GET_RECIPE_BY_ID_RESET });
-  dispatch({ type: LIST_RECIPES_REQUEST });
+export const listRecipes =
+  (keyword = "") =>
+  async (dispatch) => {
+    dispatch({ type: GET_RECIPE_BY_ID_RESET });
+    dispatch({ type: LIST_RECIPES_REQUEST });
 
-  try {
-    const { data } = await axios.get("/api/v1/recipes");
-    dispatch({
-      type: LIST_RECIPES_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: LIST_RECIPES_FAIL,
-      payload: extractServerError(error.response) || [],
-    });
-  }
-};
+    try {
+      const { data } = await axios.get(`/api/v1/recipes?keyword=${keyword}`);
+      dispatch({
+        type: LIST_RECIPES_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: LIST_RECIPES_FAIL,
+        payload: extractServerError(error.response) || [],
+      });
+    }
+  };
 
 export const getRecipeById = (id) => async (dispatch) => {
   dispatch({ type: GET_RECIPE_BY_ID_REQUEST });

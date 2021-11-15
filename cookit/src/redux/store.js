@@ -5,18 +5,25 @@ import {
   recipesListReducer,
   recipeByIdReducer,
 } from "./reducers/recipeReducer";
-import { userRegisterReducer, userLoginReducer } from "./reducers/userReducer";
+import {
+  userRegisterReducer,
+  userLoginReducer,
+  userProfileReducer,
+  userProfileUpdateReducer,
+} from "./reducers/userReducer";
 
 const reducer = combineReducers({
   recipesList: recipesListReducer,
   recipeById: recipeByIdReducer,
   userRegister: userRegisterReducer,
   userLogin: userLoginReducer,
+  userProfile: userProfileReducer,
+  userProfileUpdate: userProfileUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
-  : {};
+  : null;
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },

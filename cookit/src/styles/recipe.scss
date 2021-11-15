@@ -1,6 +1,21 @@
 // For homepage displaying all recipes
-.recipe-card-Image {
-  height: 15rem;
+
+.card {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 2px var(--mainGrey);
+  &.p-3 {
+    padding: 0 !important;
+
+    .recipe-card-Image {
+      height: 15rem;
+    }
+  }
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 5px var(--mainGrey);
+  }
 }
 
 // For each recipe
@@ -99,7 +114,7 @@
     .recipe-ingredients {
       width: 100% !important;
       padding-left: 1.3rem !important;
-      overflow-x: scroll;
+      // overflow-x: scroll;
 
       h2 {
         font-size: 1rem;
@@ -111,7 +126,7 @@
 
       .recipe-description {
         margin-top: -2rem !important;
-        overflow-x: scroll;
+        // overflow-x: scroll;
         padding-left: 0.4rem !important;
 
         h2 {
@@ -124,7 +139,7 @@
       }
 
       .recipe-instructions {
-        overflow-x: scroll;
+        // overflow-x: scroll;
         padding-left: 0.4rem !important;
 
         h2 {

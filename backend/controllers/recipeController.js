@@ -2,7 +2,15 @@ import Recipe from "../models/recipeModel.js";
 
 export const getRecipes = async (req, res) => {
   try {
-    const recipes = await Recipe.find({});
+    const keyword = req.query.keyword
+      ? {
+          name: {
+            $regex: req.query.keyword,
+            $options: "i",
+          },
+        }
+      : {};
+    const recipes = await Recipe.find({ ...keyword });
     return res.json(recipes);
   } catch (error) {
     return res.mongoError(error);

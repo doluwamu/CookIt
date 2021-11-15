@@ -10,5 +10,5 @@ export const wordBreak = (word) => {
   if (!word) return null;
   const wordSplit = word.split("");
   wordSplit.splice(15);
-  return `${wordSplit.join("")}...`;
+  return `${wordSplit.join("").trim()}...`;
 };

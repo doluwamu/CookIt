@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="bg-dark">
         <Row>
           <Col className="text-center py-3 text-light">
-            Copyright &copy; CookIt
+            Copyright &copy;CookIt
           </Col>
         </Row>
       </div>

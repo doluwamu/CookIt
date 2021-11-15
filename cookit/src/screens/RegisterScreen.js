@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { ServerError } from "../errors/ServerErrors";
 import { Link } from "react-router-dom";
+import Meta from "../components/Meta";
 
 const RegisterScreen = ({ history, location }) => {
   const dispatch = useDispatch();
@@ -45,8 +46,9 @@ const RegisterScreen = ({ history, location }) => {
 
   return (
     <FormContainer>
-      <h1>Sign Up</h1>
+      <Meta title={"Register"} />
 
+      <h1>Sign Up</h1>
       {error && <ServerError error={error} />}
       {message && <Message variant="danger">{message}</Message>}
       <Form onSubmit={submitHandler}>

@@ -4,29 +4,45 @@ import { Row, Col } from "react-bootstrap";
 import Recipe from "../components/Recipe";
 import { listRecipes } from "../redux/actions/recipeActions";
 import Loader from "../components/Loader";
+import Meta from "../components/Meta";
+import { ServerError } from "../errors/ServerErrors";
+import { Link } from "react-router-dom";
 
-const HomeScreen = () => {
+const HomeScreen = ({ match: { params } }) => {
+  const { keyword } = params;
   const dispatch = useDispatch();
 
   const recipesList = useSelector((state) => state.recipesList);
   const { loading, recipes, error } = recipesList;
 
   useEffect(() => {
-    dispatch(listRecipes());
-  }, [dispatch]);
+    dispatch(listRecipes(keyword));
+  }, [dispatch, keyword]);
 
   if (loading) {
-    return <Loader />;
+    return <Loader loading={true} />;
   }
 
   if (error) {
-    console.log(error);
+    return <ServerError error={error} />;
   }
 
   return (
     <>
-      {/* <h1 className="pt-30">H1</h1> */}
-      <h1 style={{ marginTop: "30px" }}>Cool Recipes</h1>
+      <Meta />
+
+      {!keyword ? (
+        <h1 style={{ marginTop: "30px" }}>Cool Recipes</h1>
+      ) : (
+        <>
+          <Link to="/" className="btn btn-light">
+            Go Back
+          </Link>
+          <h1 style={{ marginTop: "30px" }}>
+            Recipes related to "{keyword}" found
+          </h1>
+        </>
+      )}
       <Row>
         {recipes &&
           recipes.map((recipe) => (

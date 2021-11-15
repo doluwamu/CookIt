@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { wordBreak } from "../helpers/wordHelpers";
+import { firstLetterToUpperCase, wordBreak } from "../helpers/wordHelpers";
 import Rating from "./Rating";
 
 const Recipe = ({ recipe }) => {
@@ -13,7 +13,7 @@ const Recipe = ({ recipe }) => {
       <Card.Body>
         <Link to={`recipe/${recipe._id}`}>
           <Card.Title as="div">
-            <strong>{recipe.name}</strong>
+            <strong>{firstLetterToUpperCase(recipe.name)}</strong>
           </Card.Title>
         </Link>
 

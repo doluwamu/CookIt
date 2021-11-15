@@ -1,9 +1,10 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { logout } from "../redux/actions/userActions";
-// import SearchBox from "./SearchBox";
+import SearchBox from "./SearchBox";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,18 +25,29 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <Route render={({ history }) => <SearchBox history={history} />} />
             <Nav className="ms-auto">
-              {userInfo ? (
+              {userInfo && (
                 <>
-                  <h5>Welcome: {userInfo.name}</h5>
+                  <NavDropdown
+                    title={`Welcome: ${userInfo.name}`}
+                    id="username"
+                  >
+                    <LinkContainer to={`/profile`}>
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
 
-                  <div onClick={logoutHandler}>
-                    <Nav.Link>
-                      <i className="fas fa-sign-out-alt"></i> Sign Out
-                    </Nav.Link>
-                  </div>
+                    <LinkContainer to="/login">
+                      <NavDropdown.Item onClick={logoutHandler}>
+                        <i className="fas fa-sign-out-alt"></i> Sign Out
+                      </NavDropdown.Item>
+                    </LinkContainer>
+                  </NavDropdown>
                 </>
-              ) : (
+              )}
+              {userInfo && userInfo.isAdmin && <h5>Admin</h5>}
+
+              {!userInfo && (
                 <>
                   <LinkContainer to="/login">
                     <Nav.Link>

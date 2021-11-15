@@ -6,6 +6,7 @@ import { loginUser } from "../redux/actions/userActions";
 import Loader from "../components/Loader";
 import { ServerError } from "../errors/ServerErrors";
 import { Link } from "react-router-dom";
+import Meta from "../components/Meta";
 
 const LoginScreen = ({ history, location }) => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const LoginScreen = ({ history, location }) => {
 
   return (
     <FormContainer>
+      <Meta title={"Login"} />
       <h1>Sign In</h1>
 
       {error && <ServerError error={error} />}
@@ -61,7 +63,11 @@ const LoginScreen = ({ history, location }) => {
         </Form.Group>
 
         <Button type="submit" className="btn btn-primary">
-          {loading ? <Loader width={"15px"} height={"15px"} /> : "Sign In"}
+          {loading ? (
+            <Loader width={"15px"} height={"15px"} redirecting={true} />
+          ) : (
+            "Sign In"
+          )}
         </Button>
       </Form>
 

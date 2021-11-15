@@ -5,7 +5,8 @@ import { Image } from "react-bootstrap";
 import { firstLetterToUpperCase } from "../helpers/wordHelpers";
 import { getRecipeById } from "../redux/actions/recipeActions";
 import Loader from "../components/Loader";
-// import { recipes } from "../data";
+import Meta from "../components/Meta";
+import { ServerError } from "../errors/ServerErrors";
 
 const RecipeScreen = ({ match: { params } }) => {
   const { id } = params;
@@ -19,15 +20,17 @@ const RecipeScreen = ({ match: { params } }) => {
   }, [dispatch, id]);
 
   if (loading) {
-    return <Loader />;
+    return <Loader redirecting={true} />;
   }
 
   if (error) {
-    console.log(error);
+    return <ServerError error={error} />;
   }
 
   return (
     <>
+      <Meta title={recipe.name} />
+
       <Link className="btn btn-light" to="/">
         Go Back
       </Link>
