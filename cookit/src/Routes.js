@@ -6,6 +6,7 @@ import RecipeScreen from "./screens/RecipeScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import AdminPanelScreen from "./screens/AdminPanelScreen";
 // import PageNotFoundScreen from "./screens/PageNotFoundScreen";
 
 const Routes = () => {
@@ -17,6 +18,7 @@ const Routes = () => {
         <Route path="/login" component={LoginScreen} />
         <Route path="/register" component={RegisterScreen} />
         <Route path="/profile" component={ProfileScreen} />
+        <Route path="/admin" component={AdminPanelScreen} />
         <Route path="/recipe/:id" component={RecipeScreen} />
         {/* <Route path="/:notFound" component={PageNotFoundScreen} exact /> */}
       </Container>

@@ -1,0 +1,59 @@
+h1 {
+  &.admin-header {
+    text-align: center !important;
+  }
+}
+
+div {
+  &.admin-items-container {
+    // background: green;
+    padding: 0.5rem;
+    max-width: 70rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .admin-item-card {
+      //   background: blue;
+      width: 20rem;
+      height: 18rem;
+      //   border: 1px solid black;
+
+      .admin-item {
+        background: var(--mainBlack);
+        width: 15rem;
+        height: 15rem;
+        margin: 1rem auto;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.01);
+        }
+
+        .icon-container {
+          width: 8rem;
+          margin: 0 auto;
+          padding: 40px 5px 15px;
+          //   background: pink;
+
+          i {
+            width: 6rem !important;
+            font-size: 6rem;
+            margin: 0 auto !important;
+            color: #fff;
+
+            &.fa-user {
+              margin-left: 15px !important;
+            }
+          }
+        }
+
+        .admin-function {
+          text-align: center;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

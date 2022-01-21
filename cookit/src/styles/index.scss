@@ -1,0 +1,48 @@
+@import "./forms.scss";
+@import "./recipe.scss";
+@import "./adminPanel.scss";
+
+:root {
+  --mainBlack: #000;
+  --mainGrey: #777;
+  --mainWhite: #fff;
+}
+
+main {
+  min-height: 80vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+header {
+  a {
+    text-decoration: none;
+  }
+
+  h5 {
+    margin-top: 0.7rem;
+    margin-right: 1.8rem;
+    color: var(--mainWhite);
+  }
+}
+
+footer {
+  max-width: 100vw;
+  overflow: hidden;
+}

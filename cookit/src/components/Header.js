@@ -37,6 +37,12 @@ const Header = () => {
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
 
+                    {userInfo.isAdmin && (
+                      <LinkContainer to='/admin'>
+                        <NavDropdown.Item>Admin Panel</NavDropdown.Item>
+                      </LinkContainer>
+                    )}
+
                     <LinkContainer to="/login">
                       <NavDropdown.Item onClick={logoutHandler}>
                         <i className="fas fa-sign-out-alt"></i> Sign Out
@@ -45,7 +51,7 @@ const Header = () => {
                   </NavDropdown>
                 </>
               )}
-              {userInfo && userInfo.isAdmin && <h5>Admin</h5>}
+              {/* {userInfo && userInfo.isAdmin && <h5>Admin</h5>} */}
 
               {!userInfo && (
                 <>
